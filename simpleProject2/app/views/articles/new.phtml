@@ -30,12 +30,8 @@
     );
 ?>
 
-<div class="form-group">
-    <label for="fieldId" class="col-sm-2 control-label">Id</label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(["id", "type" => "number", "class" => "form-control", "id" => "fieldId"]) ?>
-    </div>
-</div>
+<input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+    value='<?php echo $this->security->getToken() ?>'/>
 
 <div class="form-group">
     <label for="fieldTitre" class="col-sm-2 control-label">Titre</label>

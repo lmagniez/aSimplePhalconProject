@@ -22,7 +22,7 @@ class Tags extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("mydatabase");
+        $this->setSchema("phalcon");
         $this->setSource("tags");
         $this->hasMany('id', 'ApplicationModels\Articles', 'tagId', ['alias' => 'Articles']);
     }

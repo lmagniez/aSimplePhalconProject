@@ -30,6 +30,9 @@
     );
 ?>
 
+<input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+    value='<?php echo $this->security->getToken() ?>'/>
+
 <div class="form-group">
     <label for="fieldId" class="col-sm-2 control-label">Id</label>
     <div class="col-sm-10">
@@ -50,14 +53,6 @@
         <?php echo $this->tag->textField(["email", "size" => 30, "class" => "form-control", "id" => "fieldEmail"]) ?>
     </div>
 </div>
-
-<div class="form-group">
-    <label for="fieldPassword" class="col-sm-2 control-label">Password</label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(["password", "size" => 30, "class" => "form-control", "id" => "fieldPassword"]) ?>
-    </div>
-</div>
-
 
 <?php echo $this->tag->hiddenField("id") ?>
 

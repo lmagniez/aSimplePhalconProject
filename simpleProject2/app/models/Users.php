@@ -59,7 +59,7 @@ class Users extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("mydatabase");
+        $this->setSchema("phalcon");
         $this->setSource("users");
         $this->hasMany('id', 'ApplicationModels\Articles', 'userId', ['alias' => 'Articles']);
         $this->hasMany('id', 'ApplicationModels\Comments', 'userId', ['alias' => 'Comments']);

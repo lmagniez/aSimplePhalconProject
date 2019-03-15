@@ -7,6 +7,8 @@ use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Direct as Flash;
+use \Phalcon\Mvc\Dispatcher as PhDispatcher;
+use Phalcon\Security;
 
 /**
  * Shared configuration service
@@ -110,3 +112,51 @@ $di->setShared('session', function () {
 
     return $session;
 });
+
+
+$di->set(
+    'dispatcher',
+    function() use ($di) {
+
+        $evManager = $di->getShared('eventsManager');
+
+        $evManager->attach(
+            "dispatch:beforeException",
+            function($event, $dispatcher, $exception)
+            {
+                switch ($exception->getCode()) {
+                    case PhDispatcher::EXCEPTION_HANDLER_NOT_FOUND:
+                    case PhDispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                        $dispatcher->forward(
+                            array(
+                                'controller' => 'error',
+                                'action'     => 'show404',
+                            )
+                        );
+                        return false;
+                }
+            }
+        );
+        $dispatcher = new PhDispatcher();
+        $dispatcher->setEventsManager($evManager);
+        return $dispatcher;
+    },
+    true
+);
+
+//This component is automatically registered in the services container as security (re-register it to setup its options)
+$di->set(
+    'security',
+    function () {
+        $security = new Security();
+
+        // Set the password hashing factor to 12 rounds
+        $security->setWorkFactor(12);
+
+        return $security;
+    },
+    true
+);
+
+
+

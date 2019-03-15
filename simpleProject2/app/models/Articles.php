@@ -46,7 +46,7 @@ class Articles extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("mydatabase");
+        $this->setSchema("phalcon");
         $this->setSource("articles");
         $this->hasMany('id', 'ApplicationModels\Comments', 'articleId', ['alias' => 'Comments']);
         $this->belongsTo('tagId', 'ApplicationModels\Tags', 'id', ['alias' => 'Tags']);

@@ -40,7 +40,7 @@ class Comments extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("mydatabase");
+        $this->setSchema("phalcon");
         $this->setSource("comments");
         $this->belongsTo('articleId', 'ApplicationModels\Articles', 'id', ['alias' => 'Articles']);
         $this->belongsTo('userId', 'ApplicationModels\Users', 'id', ['alias' => 'Users']);
