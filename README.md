@@ -31,3 +31,10 @@ return new \Phalcon\Config([
 ...
 ])
 ```
+
+Note that if you modify the database name, you must also change every occurrence of 
+```
+$this->setSchema("phalcon");
+```
+in the model files. (Users.php, Comments.php, Articles.php, Tags.php)
+
