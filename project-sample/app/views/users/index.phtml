@@ -5,19 +5,14 @@
 ?>
 
 <div class="container">
+
   <div class="row">
-
-
     <div class="page-header">
         <?php if ($this->session->has('auth')) {?>
-            <h1>Search users</h1>
+            <h1 class="display-2" style="font-weight: bold;">Search user</h1>
         <?php } else {?>
-            <h1>Log in</h1>
-	    <p>
-               <?php echo $this->tag->linkTo(["users/new", "Sign up"]) ?>
-            </p>
+            <h1 class="display-2" style="font-weight: bold;">Log in</h1>
         <?php } ?>
-        
     </div>
 
     <?php echo $this->getContent() ?>
@@ -63,7 +58,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <?php echo $this->tag->submitButton(["Search", "class" => "btn btn-default"]) ?>
+            <?php echo $this->tag->submitButton(["Search", "class" => "btn btn-info"]) ?>
         </div>
     </div>
 
@@ -101,21 +96,13 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <?php echo $this->tag->submitButton(["Log In", "class" => "btn btn-default"]) ?>
+            <button type="button" class="btn btn-info" onClick='location.href="/users/new"'>Sign up</button>
+            <?php echo $this->tag->submitButton(["Log In", "class" => "button btn btn-info"]) ?>
         </div>
     </div>
 
     <?php echo $this->tag->endForm(); ?>
 
 <?php }?>
-
-
-
-
-
-
-
-
-
 
 </div>

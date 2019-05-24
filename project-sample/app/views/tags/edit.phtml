@@ -4,56 +4,53 @@
  */
 ?>
 
-<div class="row">
-    <nav>
-        <ul class="pager">
-            <li class="previous"><?php echo $this->tag->linkTo(["tags", "Back"]) ?></li>
-        </ul>
-    </nav>
-</div>
+<div class="container">
 
-<div class="page-header">
-    <h1>
-        Edit tags
-    </h1>
-</div>
+    <p> <br></p>
 
-<?php echo $this->getContent(); ?>
+    <button type="button" class="btn btn-dark" onClick='location.href="/tags"'>Go back</button>
 
-<?php
-    echo $this->tag->form(
-        [
-            "tags/save",
-            "autocomplete" => "off",
-            "class" => "form-horizontal"
-        ]
-    );
-?>
-
-<input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
-    value='<?php echo $this->security->getToken() ?>'/>
-
-<div class="form-group">
-    <label for="fieldId" class="col-sm-2 control-label">Id</label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(["id", "type" => "number", "class" => "form-control", "id" => "fieldId"]) ?>
+    <div class="page-header">
+        <h1 class="display-2" style="font-weight: bold;">Edit tag</h1>
     </div>
-</div>
 
-<div class="form-group">
-    <label for="fieldLibelle" class="col-sm-2 control-label">Libelle</label>
-    <div class="col-sm-10">
-        <?php echo $this->tag->textField(["libelle", "size" => 30, "class" => "form-control", "id" => "fieldLibelle"]) ?>
+    <?php echo $this->getContent(); ?>
+
+    <?php
+        echo $this->tag->form(
+            [
+                "tags/save",
+                "autocomplete" => "off",
+                "class" => "form-horizontal"
+            ]
+        );
+    ?>
+
+    <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
+        value='<?php echo $this->security->getToken() ?>'/>
+
+    <div class="form-group">
+        <label for="fieldId" class="col-sm-2 control-label">Id</label>
+        <div class="col-sm-10">
+            <?php echo $this->tag->textField(["id", "type" => "number", "class" => "form-control", "id" => "fieldId"]) ?>
+        </div>
     </div>
-</div>
 
-
-<?php echo $this->tag->hiddenField("id") ?>
-
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <?php echo $this->tag->submitButton(["Save", "class" => "btn btn-default"]) ?>
+    <div class="form-group">
+        <label for="fieldLibelle" class="col-sm-2 control-label">Libelle</label>
+        <div class="col-sm-10">
+            <?php echo $this->tag->textField(["libelle", "size" => 30, "class" => "form-control", "id" => "fieldLibelle"]) ?>
+        </div>
     </div>
-</div>
 
-<?php echo $this->tag->endForm(); ?>
+
+    <?php echo $this->tag->hiddenField("id") ?>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <?php echo $this->tag->submitButton(["Save", "class" => "btn btn-info"]) ?>
+        </div>
+    </div>
+
+    <?php echo $this->tag->endForm(); ?>
+</div>

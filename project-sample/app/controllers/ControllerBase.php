@@ -60,11 +60,27 @@ class ControllerBase extends Controller
      */
     public function detect_SQLInjection($strToCheck) {
 
-        $sql_keyword = ["insert", "delete", "drop", "update", "into", "where", ";", "union", "or", "and", "--", "all", "select"];
-        $strToCheck = strtolower ($strToCheck);
+        $sql_keyword = ["insert", "delete", "drop", "update", "into", "'", "=", ";", "\"", "where", ";", "union", "or", "and", "--", "all", "select"];
+        $strToCheck = strtolower($strToCheck);
+
+        // Particular case
+        if ((strpos($strToCheck, "select") !== false) && (strpos($strToCheck, "from") !== false)) {
+            return true;
+        }
+        if ((strpos($strToCheck, "delete") !== false) && (strpos($strToCheck, "from") !== false)) {
+            return true;
+        }
+        if ((strpos($strToCheck, "insert") !== false) && (strpos($strToCheck, "into") !== false)) {
+            return true;
+        }
+        if ((strpos($strToCheck, "update") !== false) && (strpos($strToCheck, "set") !== false)) {
+            return true;
+        }
+        if ((strpos($strToCheck, "create") !== false) && (strpos($strToCheck, "table") !== false)) {
+            return true;
+        }
 
         foreach($sql_keyword as $keyword) {
-
             if (strpos($strToCheck, $keyword) !== false) {
                 return true;
             }
