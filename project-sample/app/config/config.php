@@ -32,9 +32,9 @@ return new \Phalcon\Config([
         //'baseUri'        => 'http://localhost:8080/',
         
 	/* configuration for myDockerForPhalconNginx */
-	'baseUri'        => '/',
+	//'baseUri'        => '/',
 
 	/* configuration for myDockerForPhalconApache */
-        //'baseUri'        => preg_replace('/public([\/\\\\])index.php$/', '', $_SERVER["PHP_SELF"]),
+        'baseUri'        => preg_replace('/public([\/\\\\])index.php$/', '', $_SERVER["PHP_SELF"]),
     ]
 ]);

@@ -8,7 +8,9 @@
 
     <p> <br></p>
 
-    <button type="button" class="btn btn-dark" onClick='location.href="/articles"'>Go back</button>
+    <button type="button" class="btn btn-dark" onClick='location.href="<?php echo $this->url->get("articles");?>"'>
+        <?php echo Phalcon\Tag::linkTo(['articles', 'Go Back', 'class' => 'edit-btn', 'style' => 'color:white;']) ?>
+    </button>
 
     <div class="page-header">
         <h1 class="display-2" style="font-weight: bold;">Edit article</h1>

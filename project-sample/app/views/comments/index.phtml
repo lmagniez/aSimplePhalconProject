@@ -60,7 +60,7 @@
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php echo $this->tag->submitButton(["Search", "class" => "btn btn-info"]) ?>
-            <button type="button" class="btn btn-info" onClick='location.href="/comments/new"'>Create comment</button>
+            <button type="button" class="btn btn-info" onClick='location.href="<?php echo $this->url->get("comments/new");?>"'>Create comment</button>
         </div>
     </div>
 
